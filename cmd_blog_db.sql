@@ -54,11 +54,11 @@ insert into likes (user_id, post_id) values
 
 -- ===== SELECT POSTS CREATORS===== --
 
-SELECT P.tittle, P.text, U.first_name, U.last_name, U.email FROM posts P
+SELECT P.tittle, P.text, U.first_name ||' '|| U.last_name AS creator, U.email FROM posts P
 inner join users U on P.creator_id = U.id;
 
 -- ===== SELECT POSTS LIKES===== --
 
-SELECT P.tittle, P.text, U.first_name, U.last_name, U.email FROM posts P
+SELECT P.tittle, P.text, U.first_name ||' '|| U.last_name AS user_like, U.email FROM posts P
 inner join likes L on L.post_id = P.id
 inner join users U on L.user_id = U.id;
